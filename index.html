@@ -17,7 +17,7 @@
       border: 1px solid #ccc;
       border-radius: 10px;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-      background-color: rgba(255, 255, 255, 0.8);
+      background-color: #fff;
     }
 
     #quote {
@@ -50,25 +50,10 @@
       cursor: pointer;
     }
 
-    /* Массив изображений фона */
-    .background-image-1 {
+    body {
       background-image: url("https://bipbap.ru/wp-content/uploads/2017/09/eiffel-tower-paris-france-eyfeleva-bashnya-7n74-scaled.jpg");
-    }
-
-    .background-image-2 {
-      background-image: url("https://cdn.pixabay.com/photo/2015/04/23/22/13/new-york-city-736885_1280.jpg");
-    }
-
-    .background-image-3 {
-      background-image: url("https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_1280.jpg");
-    }
-
-    .background-image-4 {
-      background-image: url("https://cdn.pixabay.com/photo/2016/11/29/04/19/sunset-1867082_1280.jpg");
-    }
-
-    .background-image-5 {
-      background-image: url("https://cdn.pixabay.com/photo/2015/06/19/21/24/field-815277_1280.jpg");
+      background-size: cover;
+      background-position: center;
     }
   </style>
 </head>
@@ -83,16 +68,16 @@
   <script>
     // Массив цитат
     const quotes = [
-      { quote: "Жизнь - это не проблема, которую нужно решить, а реальность, которую нужно испытать.", author: "Будда", backgroundImage: "background-image-1" },
-      { quote: "Самый большой риск в жизни - это не рискнуть.", author: "Опра Уинфри", backgroundImage: "background-image-2" },
-      { quote: "Единственный способ сделать великую работу - любить то, что ты делаешь.", author: "Стив Джобс", backgroundImage: "background-image-3" },
-      { quote: "Если вы хотите прожить счастливую жизнь, привяжите ее к цели, а не к людям или вещам.", author: "Альберт Эйнштейн", backgroundImage: "background-image-4" },
-      { quote: "Успех - это не окончательный, неудача - это не фатальный: это мужество продолжать, что имеет значение.", author: "Уинстон Черчилль", backgroundImage: "background-image-5" },
-      { quote: "Не бойтесь потерпеть неудачу. Это всего лишь возможность начать снова, на этот раз более умно.", author: "Генри Форд", backgroundImage: "background-image-1" },
-      { quote: "Самый важный урок в жизни - это знать, что даже дураки иногда бывают правы.", author: "Уинстон Черчилль", backgroundImage: "background-image-2" },
-      { quote: "Если вы думаете, что можете сделать что-то или не можете, вы правы в обоих случаях.", author: "Генри Форд", backgroundImage: "background-image-3" },
-      { quote: "Самый лучший способ предсказать будущее - создать его.", author: "Авраам Линкольн", backgroundImage: "background-image-4" },
-      { quote: "Не ждите, пока идеальные условия. Начните сейчас. С любыми условиями, которые у вас есть.", author: "Наполеон Хилл", backgroundImage: "background-image-5" }
+      { quote: "Жизнь - это не проблема, которую нужно решить, а реальность, которую нужно испытать.", author: "Будда" },
+      { quote: "Самый большой риск в жизни - это не рискнуть.", author: "Опра Уинфри" },
+      { quote: "Единственный способ сделать великую работу - любить то, что ты делаешь.", author: "Стив Джобс" },
+      { quote: "Если вы хотите прожить счастливую жизнь, привяжите ее к цели, а не к людям или вещам.", author: "Альберт Эйнштейн" },
+      { quote: "Успех - это не окончательный, неудача - это не фатальный: это мужество продолжать, что имеет значение.", author: "Уинстон Черчилль" },
+      { quote: "Не бойтесь потерпеть неудачу. Это всего лишь возможность начать снова, на этот раз более умно.", author: "Генри Форд" },
+      { quote: "Самый важный урок в жизни - это знать, что даже дураки иногда бывают правы.", author: "Уинстон Черчилль" },
+      { quote: "Если вы думаете, что можете сделать что-то или не можете, вы правы в обоих случаях.", author: "Генри Форд" },
+      { quote: "Самый лучший способ предсказать будущее - создать его.", author: "Авраам Линкольн" },
+      { quote: "Не ждите, пока идеальные условия. Начните сейчас. С любыми условиями, которые у вас есть.", author: "Наполеон Хилл" }
     ];
 
     // Получить случайную цитату
@@ -105,8 +90,6 @@
     function displayQuote(quote) {
       document.getElementById("quote").textContent = quote.quote;
       document.getElementById("author").textContent = quote.author;
-      document.body.classList.remove("background-image-1", "background-image-2", "background-image-3", "background-image-4", "background-image-5");
-      document.body.classList.add(quote.backgroundImage) || document.body.classList.add("background-image-1"); // Установить начальное фоновое изображение, если его нет в цитате
     }
 
     // Обработчик события для кнопки
