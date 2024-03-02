@@ -40,6 +40,16 @@
       color: #fff;
       cursor: pointer;
     }
+
+    #twitter-button {
+      display: inline-block;
+      padding: 10px 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #1da1f2;
+      color: #fff;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -47,6 +57,7 @@
     <p id="quote"></p>
     <p id="author"></p>
     <button id="button">Сгенерировать цитату</button>
+    <button id="twitter-button">Твитнуть цитату</button>
   </div>
 
   <script>
@@ -80,6 +91,13 @@
     document.getElementById("button").addEventListener("click", function() {
       const quote = getRandomQuote();
       displayQuote(quote);
+    });
+
+    // Обработчик события для кнопки Twitter
+    document.getElementById("twitter-button").addEventListener("click", function() {
+      const quote = getRandomQuote();
+      const tweet = `"${quote.quote}" - ${quote.author}`;
+      window.open(`https://twitter.com/intent/tweet?text=${tweet}`, "_blank");
     });
   </script>
 </body>
