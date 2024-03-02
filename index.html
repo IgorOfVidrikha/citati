@@ -121,6 +121,10 @@
       const tweet = `"${quote.quote}" - ${quote.author}`;
       window.open(`https://twitter.com/intent/tweet?text=${tweet}`, "_blank");
     });
+
+    // Установить начальное фоновое изображение
+    const initialQuote = getRandomQuote();
+    displayQuote(initialQuote);
   </script>
 </body>
 </html>
