@@ -18,7 +18,6 @@ border: 1px solid #ccc;
 border-radius: 10px;
 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 background-color: #fff;
-transition: background-image 0.5s ease; /* Плавный переход для фонового изображения */
 }
 
 #quote {
@@ -32,24 +31,27 @@ font-size: 16px;
 color: #666;
 }
 
-.button {
+#button {
 padding: 10px 20px;
 border: 1px solid #ccc;
 border-radius: 5px;
+background-color: #337ab7;
+color: #fff;
 cursor: pointer;
 }
 
-#generate-button {
-background-color: #337ab7;
-color: #fff;
-}
-
 #twitter-button {
+display: inline-block;
+padding: 10px 20px;
+border: 1px solid #ccc;
+border-radius: 5px;
 background-color: #1da1f2;
 color: #fff;
+cursor: pointer;
 }
 
 body {
+background-image: url("https://bipbap.ru/wp-content/uploads/2017/09/eiffel-tower-paris-france-eyfeleva-bashnya-7n74-scaled.jpg");
 background-size: cover;
 background-position: center;
 }
@@ -59,8 +61,8 @@ background-position: center;
 <div id="quote-container">
 <p id="quote"></p>
 <p id="author"></p>
-<button id="generate-button" class="button">Сгенерировать цитату</button>
-<button id="twitter-button" class="button">Твитнуть цитату</button>
+<button id="button">Сгенерировать цитату</button>
+<button id="twitter-button">Твитнуть цитату</button>
 </div>
 
 <script>
@@ -78,23 +80,10 @@ const quotes = [
 { quote: "Не ждите, пока идеальные условия. Начните сейчас. С любыми условиями, которые у вас есть.", author: "Наполеон Хилл" }
 ];
 
-// Массив фоновых изображений
-const backgrounds = [
-"https://bipbap.ru/wp-content/uploads/2017/09/eiffel-tower-paris-france-eyfeleva-bashnya-7n74-scaled.jpg",
-"https://proprikol.ru/wp-content/uploads/2020/12/reki-krasivye-kartinki-35.jpg",
-"https://funik.ru/wp-content/uploads/2018/10/bf947adb6fb8534411e6.jpg"
-];
-
 // Получить случайную цитату
 function getRandomQuote() {
 const index = Math.floor(Math.random() * quotes.length);
 return quotes[index];
-}
-
-// Получить случайное фоновое изображение
-function getRandomBackground() {
-const index = Math.floor(Math.random() * backgrounds.length);
-return backgrounds[index];
 }
 
 // Отобразить цитату
@@ -103,9 +92,22 @@ document.getElementById("quote").textContent = quote.quote;
 document.getElementById("author").textContent = quote.author;
 }
 
-// Обработчик события для кнопки "Сгенерировать цитату"
-document.getElementById("generate-button").addEventListener("click", function() {
+// Обработчик события для кнопки
+document.getElementById("button").addEventListener("click", function() {
 const quote = getRandomQuote();
 displayQuote(quote);
-document.getElementById("quote-container").style.backgroundImage = `url('${getRandomBackground()}')`; // Установка случайного фонового изображения
 });
+
+// Обработчик события для кнопки Twitter
+document.getElementById("twitter-button").addEventListener("click", function() {
+const quote = getRandomQuote();
+const tweet = `"${quote.quote}" - ${quote.author}`;
+window.open(`https://twitter.com/intent/tweet?text=${tweet}`, "_blank");
+});
+
+// Установить начальное фоновое изображение
+const initialQuote = getRandomQuote();
+displayQuote(initialQuote);
+</script>
+</body>
+</html>
