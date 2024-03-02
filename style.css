@@ -1,29 +1,67 @@
-/* Стилизуем кнопку */
-#button {
+/* Стилизуем общую страницу */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+/* Стилизуем контейнер цитаты */
+#quote-container {
+  max-width: 600px;
+  padding: 30px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Стилизуем цитату */
+#quote {
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  margin-bottom: 15px;
+}
+
+/* Стилизуем автора */
+#author {
+  font-size: 1rem;
+  color: #888;
+}
+
+/* Стилизуем кнопки */
+.button {
   padding: 10px 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #337ab7;
-  color: #fff;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
 
-#button:hover {
+/* Стилизуем кнопку "Сгенерировать цитату" */
+#generate-button {
+  background-color: #337ab7;
+  color: #fff;
+}
+
+#generate-button:hover {
   background-color: #286090;
 }
 
-/* Стилизуем кнопку Twitter */
+/* Стилизуем кнопку "Твитнуть цитату" */
 #twitter-button {
-  padding: 10px 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
   background-color: #1da1f2;
   color: #fff;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
 }
 
 #twitter-button:hover {
   background-color: #1a94dd;
+}
+
+/* Стилизуем кнопку "Скопировать цитату" */
+#copy-button {
+  background-color: #449d44;
+  color: #fff;
+}
+
+#copy-button:hover {
+  background-color: #398439;
 }
