@@ -106,7 +106,7 @@
       document.getElementById("quote").textContent = quote.quote;
       document.getElementById("author").textContent = quote.author;
       document.body.classList.remove("background-image-1", "background-image-2", "background-image-3", "background-image-4", "background-image-5");
-      document.body.classList.add(quote.backgroundImage);
+      document.body.classList.add(quote.backgroundImage) || document.body.classList.add("background-image-1"); // Установить начальное фоновое изображение, если его нет в цитате
     }
 
     // Обработчик события для кнопки
