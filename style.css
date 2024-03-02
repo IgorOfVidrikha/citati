@@ -9,7 +9,7 @@ body {
   max-width: 600px;
   padding: 30px;
   margin: 0 auto;
-  background-color: #fff;
+  background-color: #f0f8ff;  /* Изменен цвет фона */
   border: 1px solid #ccc;
   border-radius: 5px;
 }
@@ -38,7 +38,7 @@ body {
 
 /* Стилизуем кнопку "Сгенерировать цитату" */
 #generate-button {
-  background-color: #337ab7;
+  background-color: #337ab7;  /* Изменен цвет фона */
   color: #fff;
 }
 
@@ -48,7 +48,7 @@ body {
 
 /* Стилизуем кнопку "Твитнуть цитату" */
 #twitter-button {
-  background-color: #1da1f2;
+  background-color: #1da1f2;  /* Изменен цвет фона */
   color: #fff;
 }
 
@@ -58,10 +58,20 @@ body {
 
 /* Стилизуем кнопку "Скопировать цитату" */
 #copy-button {
-  background-color: #449d44;
+  background-color: #449d44;  /* Изменен цвет фона */
   color: #fff;
 }
 
 #copy-button:hover {
   background-color: #398439;
+}
+
+/* Стилизуем новую кнопку "Поделиться цитатой" */
+#share-button {
+  background-color: #ff9900;  /* Новый цвет фона */
+  color: #fff;
+}
+
+#share-button:hover {
+  background-color: #e68a00;
 }
