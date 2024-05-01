@@ -1,13 +1,28 @@
-// Импортируем библиотеку Axios для запросов к API
-import axios from 'axios';
+import mysql from 'mysql';
 
-// Получаем случайную цитату из API
-const getQuote = async () => {
-  const response = await axios.get('https://quotes.rest/qod');
-  return response.data.contents.quotes[0];
+// Создаем подключение к базе данных
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'Igor',
+  password: 'moroz247tank',
+  database: 'quotes'
+});
+
+// Функция для получения случайной цитаты из базы данных
+const getQuoteFromDatabase = () => {
+  return new Promise((resolve, reject) => {
+    // Выполняем запрос к базе данных
+    connection.query('SELECT quote, author FROM quotes_table ORDER BY RAND() LIMIT 1', (error, results, fields) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(results[0]); // Возвращаем первую (единственную) цитату из результатов
+      }
+    });
+  });
 };
 
-// Отображаем цитату
+// Обновленная функция для отображения цитаты
 const displayQuote = (quote) => {
   document.getElementById("quote").textContent = quote.quote;
   document.getElementById("author").textContent = quote.author;
@@ -15,17 +30,21 @@ const displayQuote = (quote) => {
 
 // Обработчик события для кнопки
 document.getElementById("button").addEventListener("click", async () => {
-  const quote = await getQuote();
-  displayQuote(quote);
-});
-
-// Обработчик события для кнопки Twitter
-document.getElementById("twitter-button").addEventListener("click", async () => {
-  const quote = await getQuote();
-  const tweet = `"${quote.quote}" - ${quote.author}`;
-  window.open(`https://twitter.com/intent/tweet?text=${tweet}`, "_blank");
+  try {
+    const quote = await getQuoteFromDatabase();
+    displayQuote(quote);
+  } catch (error) {
+    console.error('Error fetching quote from database:', error);
+  }
 });
 
 // Устанавливаем начальную цитату
-const initialQuote = await getQuote();
-displayQuote(initialQuote);
+(async () => {
+  try {
+    await connection.connect(); // Подключаемся к базе данных
+    const initialQuote = await getQuoteFromDatabase();
+    displayQuote(initialQuote);
+  } catch (error) {
+    console.error('Database connection error:', error);
+  }
+})();
